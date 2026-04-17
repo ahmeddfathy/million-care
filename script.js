@@ -297,12 +297,12 @@ function updateSlider() {
     const prevBtn = document.getElementById('reviewsPrev');
     const nextBtn = document.getElementById('reviewsNext');
     if (prevBtn) {
-        prevBtn.style.opacity = reviewScrollPos <= 0 ? '0.5' : '1';
-        prevBtn.style.pointerEvents = reviewScrollPos <= 0 ? 'none' : 'auto';
+        if (reviewScrollPos <= 0) prevBtn.classList.add('disabled');
+        else prevBtn.classList.remove('disabled');
     }
     if (nextBtn) {
-        nextBtn.style.opacity = reviewScrollPos >= maxScroll ? '0.5' : '1';
-        nextBtn.style.pointerEvents = reviewScrollPos >= maxScroll ? 'none' : 'auto';
+        if (reviewScrollPos >= maxScroll) nextBtn.classList.add('disabled');
+        else nextBtn.classList.remove('disabled');
     }
 }
 
@@ -469,12 +469,12 @@ function updateBaSlider() {
     const prevBtn = document.getElementById('baPrev');
     const nextBtn = document.getElementById('baNext');
     if (prevBtn) {
-        prevBtn.style.opacity = baScrollPos <= 0 ? '0.5' : '1';
-        prevBtn.style.pointerEvents = baScrollPos <= 0 ? 'none' : 'auto';
+        if (baScrollPos <= 0) prevBtn.classList.add('disabled');
+        else prevBtn.classList.remove('disabled');
     }
     if (nextBtn) {
-        nextBtn.style.opacity = baScrollPos >= maxScroll ? '0.5' : '1';
-        nextBtn.style.pointerEvents = baScrollPos >= maxScroll ? 'none' : 'auto';
+        if (baScrollPos >= maxScroll) nextBtn.classList.add('disabled');
+        else nextBtn.classList.remove('disabled');
     }
 }
 
@@ -595,12 +595,12 @@ function updatePvSlider() {
     const prevBtn = document.getElementById('pvPrev');
     const nextBtn = document.getElementById('pvNext');
     if (prevBtn) {
-        prevBtn.style.opacity = pvScrollPos <= 0 ? '0.5' : '1';
-        prevBtn.style.pointerEvents = pvScrollPos <= 0 ? 'none' : 'auto';
+        if (pvScrollPos <= 0) prevBtn.classList.add('disabled');
+        else prevBtn.classList.remove('disabled');
     }
     if (nextBtn) {
-        nextBtn.style.opacity = pvScrollPos >= maxScroll ? '0.5' : '1';
-        nextBtn.style.pointerEvents = pvScrollPos >= maxScroll ? 'none' : 'auto';
+        if (pvScrollPos >= maxScroll) nextBtn.classList.add('disabled');
+        else nextBtn.classList.remove('disabled');
     }
 }
 
