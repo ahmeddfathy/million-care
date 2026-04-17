@@ -223,17 +223,17 @@ img {
 }
 
 .nav-logo {
-    height: 100px;
+    height: 72px;
     width: auto;
     object-fit: contain;
     display: block;
-    border-radius: 16px;
+    border-radius: 12px;
     transition: transform 0.35s ease, filter 0.35s ease;
     filter: drop-shadow(0 4px 12px rgba(124, 58, 237, 0.25));
 }
 
 .mc-navbar.scrolled .nav-logo {
-    height: 76px;
+    height: 56px;
 }
 
 .nav-logo:hover {
@@ -917,7 +917,7 @@ img {
     }
 }
 
-/* ===== INGREDIENTS MEGA SECTION ===== */
+/* ===== PRODUCT VIDEOS SECTION — Clean White ===== */
 .product-videos-section {
     background: #ffffff;
     position: relative;
@@ -928,6 +928,10 @@ img {
     margin: 8px 0;
     border-top: 1px solid rgba(124, 58, 237, 0.08);
     border-bottom: 1px solid rgba(124, 58, 237, 0.08);
+}
+
+.product-videos-section .reviews-slider-container {
+    max-width: 100%;
 }
 
 /* Nav buttons on white bg */

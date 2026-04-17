@@ -353,9 +353,9 @@ function initSliderTouch() {
         if (track) track.style.transition = 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
         
         if (diffX < -50) {
-            slideReview(1);  // swiped left = go forward
+            slideReview(-1);  // swiped left = go backward in RTL
         } else if (diffX > 50) {
-            slideReview(-1); // swiped right = go back
+            slideReview(1);   // swiped right = go forward in RTL
         } else {
             updateSlider();
         }
@@ -386,9 +386,9 @@ function initSliderTouch() {
         if (track) track.style.transition = 'transform 0.45s ease-out';
         
         if (mouseDiff < -50) {
-            slideReview(1);  // dragged left = go forward
+            slideReview(-1);  // dragged left = go backward in RTL
         } else if (mouseDiff > 50) {
-            slideReview(-1); // dragged right = go back
+            slideReview(1);   // dragged right = go forward in RTL
         } else {
             updateSlider();
         }
@@ -512,8 +512,8 @@ function initBaSliderTouch() {
         isDragging = false;
         if (track) track.style.transition = 'transform 0.45s ease-out';
         
-        if (diffX < -50) slideBa(1);
-        else if (diffX > 50) slideBa(-1);
+        if (diffX < -50) slideBa(-1);
+        else if (diffX > 50) slideBa(1);
         else updateBaSlider();
         diffX = 0;
     });
@@ -538,8 +538,8 @@ function initBaSliderTouch() {
         mouseActive = false;
         if (track) track.style.transition = 'transform 0.45s ease-out';
         
-        if (mouseDiff < -50) slideBa(1);
-        else if (mouseDiff > 50) slideBa(-1);
+        if (mouseDiff < -50) slideBa(-1);
+        else if (mouseDiff > 50) slideBa(1);
         else updateBaSlider();
         mouseDiff = 0;
     });
@@ -633,8 +633,8 @@ function initPvSliderTouch() {
         isDragging = false;
         if (track) track.style.transition = 'transform 0.45s ease-out';
         
-        if (diffX < -50) slidePv(1);
-        else if (diffX > 50) slidePv(-1);
+        if (diffX < -50) slidePv(-1);
+        else if (diffX > 50) slidePv(1);
         else updatePvSlider();
         diffX = 0;
     });
@@ -659,8 +659,8 @@ function initPvSliderTouch() {
         mouseActive = false;
         if (track) track.style.transition = 'transform 0.45s ease-out';
         
-        if (mouseDiff < -50) slidePv(1);
-        else if (mouseDiff > 50) slidePv(-1);
+        if (mouseDiff < -50) slidePv(-1);
+        else if (mouseDiff > 50) slidePv(1);
         else updatePvSlider();
         mouseDiff = 0;
     });
