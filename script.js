@@ -344,7 +344,7 @@ function initSliderTouch() {
         if (!isDragging) return;
         diffX = e.touches[0].clientX - startX;
         if (track) {
-            track.style.transform = `translateX(${reviewScrollPos - diffX}px)`;
+            track.style.transform = `translateX(${reviewScrollPos + diffX}px)`;
         }
     }, { passive: true });
     
@@ -376,7 +376,7 @@ function initSliderTouch() {
         if (!mouseActive) return;
         mouseDiff = e.clientX - mouseStartX;
         if (track) {
-            track.style.transform = `translateX(${reviewScrollPos - mouseDiff}px)`;
+            track.style.transform = `translateX(${reviewScrollPos + mouseDiff}px)`;
         }
     });
     
@@ -505,7 +505,7 @@ function initBaSliderTouch() {
     viewport.addEventListener('touchmove', (e) => {
         if (!isDragging) return;
         diffX = e.touches[0].clientX - startX;
-        if (track) track.style.transform = `translateX(${baScrollPos - diffX}px)`;
+        if (track) track.style.transform = `translateX(${baScrollPos + diffX}px)`;
     }, { passive: true });
     
     viewport.addEventListener('touchend', () => {
@@ -530,7 +530,7 @@ function initBaSliderTouch() {
     viewport.addEventListener('mousemove', (e) => {
         if (!mouseActive) return;
         mouseDiff = e.clientX - mouseStartX;
-        if (track) track.style.transform = `translateX(${baScrollPos - mouseDiff}px)`;
+        if (track) track.style.transform = `translateX(${baScrollPos + mouseDiff}px)`;
     });
     
     viewport.addEventListener('mouseup', () => {
@@ -626,7 +626,7 @@ function initPvSliderTouch() {
     viewport.addEventListener('touchmove', (e) => {
         if (!isDragging) return;
         diffX = e.touches[0].clientX - startX;
-        if (track) track.style.transform = `translateX(${pvScrollPos - diffX}px)`;
+        if (track) track.style.transform = `translateX(${pvScrollPos + diffX}px)`;
     }, { passive: true });
     
     viewport.addEventListener('touchend', () => {
@@ -651,7 +651,7 @@ function initPvSliderTouch() {
     viewport.addEventListener('mousemove', (e) => {
         if (!mouseActive) return;
         mouseDiff = e.clientX - mouseStartX;
-        if (track) track.style.transform = `translateX(${pvScrollPos - mouseDiff}px)`;
+        if (track) track.style.transform = `translateX(${pvScrollPos + mouseDiff}px)`;
     });
     
     viewport.addEventListener('mouseup', () => {
@@ -783,3 +783,48 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
+// ===== Smart Video Sound Management =====
+document.addEventListener('DOMContentLoaded', () => {
+    const inlineVideos = document.querySelectorAll('.video-card video');
+    
+    const observerOptions = {
+        root: null,
+        rootMargin: '-10% 0px -10% 0px',
+        threshold: 0.6 // Trigger when 60% of video is visible
+    };
+
+    const videoObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            const video = entry.target;
+            const lightbox = document.getElementById('reviewLightbox');
+            const isLightboxActive = lightbox && lightbox.classList.contains('active');
+            
+            if (entry.isIntersecting && !isLightboxActive) {
+                // Mute all other videos
+                inlineVideos.forEach(v => {
+                    if (v !== video) v.muted = true;
+                });
+                
+                // Unmute the visible one
+                video.muted = false;
+                video.play().catch(() => {
+                    // Browser policy blocked unmuted autoplay, fallback to muted
+                    video.muted = true;
+                    video.play();
+                });
+            } else if (!entry.isIntersecting) {
+                // Video left viewport -> mute it
+                video.muted = true;
+            }
+        });
+    }, observerOptions);
+
+    inlineVideos.forEach(video => {
+        videoObserver.observe(video);
+        
+        // When clicking a video to open lightbox, mute all inline videos
+        video.addEventListener('click', () => {
+            inlineVideos.forEach(v => v.muted = true);
+        });
+    });
+});
