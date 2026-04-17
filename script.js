@@ -22,9 +22,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    // ===== Hero Particles =====
-    createParticles();
-
     // ===== Navbar Scroll Effect =====
     const navbar = document.getElementById('mainNavbar');
     const stickyCTA = document.getElementById('stickyCTA');
@@ -221,28 +218,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
-// ===== Create Floating Particles =====
-function createParticles() {
-    const container = document.getElementById('heroParticles');
-    if (!container) return;
-
-    const particleCount = 30;
-
-    for (let i = 0; i < particleCount; i++) {
-        const particle = document.createElement('div');
-        particle.classList.add('hero-particle');
-        
-        const size = Math.random() * 4 + 2;
-        particle.style.width = `${size}px`;
-        particle.style.height = `${size}px`;
-        particle.style.left = `${Math.random() * 100}%`;
-        particle.style.animationDuration = `${Math.random() * 8 + 6}s`;
-        particle.style.animationDelay = `${Math.random() * 6}s`;
-        particle.style.opacity = Math.random() * 0.3 + 0.1;
-
-        container.appendChild(particle);
-    }
-}
 
 // ===== Reviews Multi-Image Slider =====
 
@@ -316,8 +291,19 @@ function updateSlider() {
     const maxScroll = getMaxScroll();
     reviewScrollPos = Math.max(0, Math.min(reviewScrollPos, maxScroll));
     
-    // LTR track: negative translateX to scroll forward
-    track.style.transform = `translateX(-${reviewScrollPos}px)`;
+    // RTL track: positive translateX to scroll forward (reveal left items)
+    track.style.transform = `translateX(${reviewScrollPos}px)`;
+    
+    const prevBtn = document.getElementById('reviewsPrev');
+    const nextBtn = document.getElementById('reviewsNext');
+    if (prevBtn) {
+        prevBtn.style.opacity = reviewScrollPos <= 0 ? '0.5' : '1';
+        prevBtn.style.pointerEvents = reviewScrollPos <= 0 ? 'none' : 'auto';
+    }
+    if (nextBtn) {
+        nextBtn.style.opacity = reviewScrollPos >= maxScroll ? '0.5' : '1';
+        nextBtn.style.pointerEvents = reviewScrollPos >= maxScroll ? 'none' : 'auto';
+    }
 }
 
 // Slide by direction: 1 = show next items, -1 = show previous
@@ -358,7 +344,7 @@ function initSliderTouch() {
         if (!isDragging) return;
         diffX = e.touches[0].clientX - startX;
         if (track) {
-            track.style.transform = `translateX(-${reviewScrollPos - diffX}px)`;
+            track.style.transform = `translateX(${reviewScrollPos - diffX}px)`;
         }
     }, { passive: true });
     
@@ -390,7 +376,7 @@ function initSliderTouch() {
         if (!mouseActive) return;
         mouseDiff = e.clientX - mouseStartX;
         if (track) {
-            track.style.transform = `translateX(-${reviewScrollPos - mouseDiff}px)`;
+            track.style.transform = `translateX(${reviewScrollPos - mouseDiff}px)`;
         }
     });
     
@@ -478,7 +464,18 @@ function updateBaSlider() {
     if (!track) return;
     const maxScroll = getMaxBaScroll();
     baScrollPos = Math.max(0, Math.min(baScrollPos, maxScroll));
-    track.style.transform = `translateX(-${baScrollPos}px)`;
+    track.style.transform = `translateX(${baScrollPos}px)`;
+    
+    const prevBtn = document.getElementById('baPrev');
+    const nextBtn = document.getElementById('baNext');
+    if (prevBtn) {
+        prevBtn.style.opacity = baScrollPos <= 0 ? '0.5' : '1';
+        prevBtn.style.pointerEvents = baScrollPos <= 0 ? 'none' : 'auto';
+    }
+    if (nextBtn) {
+        nextBtn.style.opacity = baScrollPos >= maxScroll ? '0.5' : '1';
+        nextBtn.style.pointerEvents = baScrollPos >= maxScroll ? 'none' : 'auto';
+    }
 }
 
 function slideBa(direction) {
@@ -508,7 +505,7 @@ function initBaSliderTouch() {
     viewport.addEventListener('touchmove', (e) => {
         if (!isDragging) return;
         diffX = e.touches[0].clientX - startX;
-        if (track) track.style.transform = `translateX(-${baScrollPos - diffX}px)`;
+        if (track) track.style.transform = `translateX(${baScrollPos - diffX}px)`;
     }, { passive: true });
     
     viewport.addEventListener('touchend', () => {
@@ -533,7 +530,7 @@ function initBaSliderTouch() {
     viewport.addEventListener('mousemove', (e) => {
         if (!mouseActive) return;
         mouseDiff = e.clientX - mouseStartX;
-        if (track) track.style.transform = `translateX(-${baScrollPos - mouseDiff}px)`;
+        if (track) track.style.transform = `translateX(${baScrollPos - mouseDiff}px)`;
     });
     
     viewport.addEventListener('mouseup', () => {
@@ -593,12 +590,18 @@ function updatePvSlider() {
     if (pvScrollPos < 0) pvScrollPos = 0;
     if (pvScrollPos > maxScroll) pvScrollPos = maxScroll;
     
-    track.style.transform = `translateX(-${pvScrollPos}px)`;
+    track.style.transform = `translateX(${pvScrollPos}px)`;
     
     const prevBtn = document.getElementById('pvPrev');
     const nextBtn = document.getElementById('pvNext');
-    if (prevBtn) prevBtn.style.opacity = pvScrollPos <= 0 ? '0.5' : '1';
-    if (nextBtn) nextBtn.style.opacity = pvScrollPos >= maxScroll ? '0.5' : '1';
+    if (prevBtn) {
+        prevBtn.style.opacity = pvScrollPos <= 0 ? '0.5' : '1';
+        prevBtn.style.pointerEvents = pvScrollPos <= 0 ? 'none' : 'auto';
+    }
+    if (nextBtn) {
+        nextBtn.style.opacity = pvScrollPos >= maxScroll ? '0.5' : '1';
+        nextBtn.style.pointerEvents = pvScrollPos >= maxScroll ? 'none' : 'auto';
+    }
 }
 
 function slidePv(direction) {
@@ -623,7 +626,7 @@ function initPvSliderTouch() {
     viewport.addEventListener('touchmove', (e) => {
         if (!isDragging) return;
         diffX = e.touches[0].clientX - startX;
-        if (track) track.style.transform = `translateX(-${pvScrollPos - diffX}px)`;
+        if (track) track.style.transform = `translateX(${pvScrollPos - diffX}px)`;
     }, { passive: true });
     
     viewport.addEventListener('touchend', () => {
@@ -648,7 +651,7 @@ function initPvSliderTouch() {
     viewport.addEventListener('mousemove', (e) => {
         if (!mouseActive) return;
         mouseDiff = e.clientX - mouseStartX;
-        if (track) track.style.transform = `translateX(-${pvScrollPos - mouseDiff}px)`;
+        if (track) track.style.transform = `translateX(${pvScrollPos - mouseDiff}px)`;
     });
     
     viewport.addEventListener('mouseup', () => {
