@@ -1435,32 +1435,85 @@ img {
     z-index: 1;
 }
 
-/* USP items on dark background */
+/* USP items — premium glassmorphism on dark bg */
+.home-service-dark .usp-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
 .home-service-dark .usp-item {
-    border: none;
-    background: white;
-    backdrop-filter: none;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255,255,255,0.08);
+    border-radius: 20px;
+    padding: 22px 24px;
     transform: translateY(0);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.home-service-dark .usp-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold-400), transparent);
+    opacity: 0;
+    transition: opacity 0.4s;
 }
 
 .home-service-dark .usp-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+    transform: translateY(-4px);
+    box-shadow: 0 16px 48px rgba(124, 58, 237, 0.25), inset 0 1px 0 rgba(255,255,255,0.12);
+    border-color: rgba(124, 58, 237, 0.3);
+}
+
+.home-service-dark .usp-item:hover::before {
+    opacity: 1;
 }
 
 .home-service-dark .usp-item h5 {
-    color: var(--purple-800);
+    color: #fff;
+    font-weight: 800;
+    font-size: 1.05rem;
+    margin-bottom: 4px;
 }
 
 .home-service-dark .usp-item p {
-    color: var(--text-body);
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin: 0;
 }
 
 .home-service-dark .usp-icon {
-    background: var(--purple-50);
-    color: var(--purple-600);
+    width: 52px;
+    height: 52px;
+    min-width: 52px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    background: linear-gradient(135deg, rgba(124, 58, 237, 0.25), rgba(234, 179, 8, 0.15));
+    color: var(--gold-400);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 16px rgba(124, 58, 237, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.home-service-dark .usp-item:hover .usp-icon {
+    transform: scale(1.1);
+    box-shadow: 0 8px 24px rgba(234, 179, 8, 0.3);
 }
 
 
@@ -2342,7 +2395,7 @@ img {
 
 .other-cell {
     justify-content: space-between;
-    color: rgba(255, 255, 255, 0.55);
+    color: rgba(255, 255, 255, 0.75);
     padding-right: 30px;
 }
 
@@ -2354,9 +2407,9 @@ img {
 }
 
 .comp-value.muted {
-    font-weight: 500;
+    font-weight: 600;
     font-size: 1.05rem;
-    color: rgba(255, 255, 255, 0.4);
+    color: rgba(255, 255, 255, 0.75);
 }
 
 .icon-success {
@@ -2368,7 +2421,7 @@ img {
 .icon-danger {
     color: #ef4444;
     font-size: 1.5rem;
-    opacity: 0.4;
+    opacity: 0.7;
 }
 
 @media (max-width: 991px) {
@@ -2863,20 +2916,25 @@ img {
 }
 
 @media (max-width: 767px) {
-    .cta-inner { text-align: center; padding: 40px 24px; }
-    .cta-title { font-size: 1.7rem; }
-    .cta-desc { margin-left: auto; margin-right: auto; }
+    .cta-inner { text-align: center; padding: 32px 20px; }
+    .cta-title { font-size: 1.5rem; }
+    .cta-desc { margin-left: auto; margin-right: auto; font-size: 0.9rem; margin-bottom: 24px; }
     .cta-wa-btn { 
-        padding: 12px 20px; 
-        font-size: 1rem; 
-        flex-direction: column; 
-        gap: 6px; 
-        border-radius: 20px; 
-        width: 100%; 
-    }
-    .cta-phone { 
-        padding: 4px 12px; 
+        padding: 10px 20px; 
         font-size: 0.9rem; 
+        gap: 8px; 
+        border-radius: 16px; 
+        width: auto;
+        display: inline-flex;
+        box-shadow: 0 4px 16px rgba(37, 211, 102, 0.3);
+    }
+    .cta-wa-btn i { font-size: 1.2rem; }
+    .cta-phone { 
+        padding: 3px 10px; 
+        font-size: 0.78rem; 
+    }
+    .cta-product-img {
+        max-height: 180px;
     }
 }
 

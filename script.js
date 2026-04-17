@@ -785,46 +785,80 @@ document.addEventListener('keydown', (e) => {
 
 // ===== Smart Video Sound Management =====
 document.addEventListener('DOMContentLoaded', () => {
-    const inlineVideos = document.querySelectorAll('.video-card video');
-    
-    const observerOptions = {
-        root: null,
-        rootMargin: '-10% 0px -10% 0px',
-        threshold: 0.6 // Trigger when 60% of video is visible
-    };
+    const allVideos = document.querySelectorAll('.video-card video');
+    if (!allVideos.length) return;
 
-    const videoObserver = new IntersectionObserver((entries) => {
+    // Helper: mute ALL inline videos
+    function muteAll() {
+        allVideos.forEach(v => v.muted = true);
+    }
+
+    // Helper: unmute a single video (mute the rest)
+    function unmuteOnly(video) {
+        muteAll();
+        video.muted = false;
+        video.play().catch(() => {
+            // Browser autoplay policy fallback
+            video.muted = true;
+            video.play().catch(() => {});
+        });
+    }
+
+    // Track which sections contain videos
+    const videoSections = document.querySelectorAll('#before-after, #product-videos');
+
+    // Observe each SECTION entering/leaving viewport
+    const sectionObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            const video = entry.target;
-            const lightbox = document.getElementById('reviewLightbox');
-            const isLightboxActive = lightbox && lightbox.classList.contains('active');
-            
-            if (entry.isIntersecting && !isLightboxActive) {
-                // Mute all other videos
-                inlineVideos.forEach(v => {
-                    if (v !== video) v.muted = true;
-                });
-                
-                // Unmute the visible one
-                video.muted = false;
-                video.play().catch(() => {
-                    // Browser policy blocked unmuted autoplay, fallback to muted
-                    video.muted = true;
-                    video.play();
-                });
-            } else if (!entry.isIntersecting) {
-                // Video left viewport -> mute it
-                video.muted = true;
+            const section = entry.target;
+            const sectionVideos = section.querySelectorAll('.video-card video');
+
+            if (entry.isIntersecting) {
+                // Entered section → unmute the first video in this section
+                const firstVideo = sectionVideos[0];
+                if (firstVideo) unmuteOnly(firstVideo);
+            } else {
+                // Left section → mute all its videos
+                sectionVideos.forEach(v => v.muted = true);
             }
         });
-    }, observerOptions);
+    }, {
+        root: null,
+        rootMargin: '-15% 0px -15% 0px',
+        threshold: 0.2
+    });
 
-    inlineVideos.forEach(video => {
-        videoObserver.observe(video);
-        
-        // When clicking a video to open lightbox, mute all inline videos
-        video.addEventListener('click', () => {
-            inlineVideos.forEach(v => v.muted = true);
+    videoSections.forEach(sec => sectionObserver.observe(sec));
+
+    // Click on any video → switch sound to that one only
+    allVideos.forEach(video => {
+        video.addEventListener('click', (e) => {
+            const lightbox = document.getElementById('reviewLightbox');
+            // If lightbox is about to open, mute all inline
+            if (lightbox) {
+                muteAll();
+            } else {
+                unmuteOnly(video);
+            }
         });
     });
+
+    // Also observe individual videos for auto-switch when swiping
+    const videoObserver = new IntersectionObserver((entries) => {
+        const lightbox = document.getElementById('reviewLightbox');
+        const isLightboxActive = lightbox && lightbox.classList.contains('active');
+        if (isLightboxActive) return;
+
+        entries.forEach(entry => {
+            if (entry.isIntersecting && entry.intersectionRatio >= 0.6) {
+                unmuteOnly(entry.target);
+            }
+        });
+    }, {
+        root: null,
+        rootMargin: '-10% 0px -10% 0px',
+        threshold: 0.6
+    });
+
+    allVideos.forEach(v => videoObserver.observe(v));
 });
