@@ -289,6 +289,8 @@ img {
     overflow: hidden;
     display: flex;
     align-items: center;
+    padding-top: 130px; /* added to clear the large navbar logo */
+    padding-bottom: 80px; /* space before the bottom wave */
 }
 
 .hero-gradient-overlay {
@@ -2650,36 +2652,15 @@ img {
     position: relative;
 }
 
-/* Left accent bar */
-.mc-accordion .accordion-item::before {
-    content: '';
-    position: absolute;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    width: 4px;
-    background: linear-gradient(to bottom, var(--purple-400), var(--purple-600));
-    border-radius: 0 16px 16px 0;
-    opacity: 0.4;
-    transition: opacity 0.3s;
-}
 
 .mc-accordion .accordion-item:hover {
     box-shadow: 0 8px 32px rgba(100, 60, 200, 0.14);
     transform: translateY(-2px);
 }
 
-.mc-accordion .accordion-item:hover::before {
-    opacity: 1;
-}
-
-/* Open state — accent bar full + bg tint */
+/* Open state */
 .mc-accordion .accordion-item:has(.accordion-button:not(.collapsed)) {
     box-shadow: 0 10px 40px rgba(100, 60, 200, 0.18);
-}
-
-.mc-accordion .accordion-item:has(.accordion-button:not(.collapsed))::before {
-    opacity: 1;
 }
 
 .mc-accordion .accordion-button {
@@ -2746,6 +2727,155 @@ img {
 }
 
 
+
+/* ===== PRE-FOOTER CTA ===== */
+.pre-footer-cta {
+    padding: 40px 0;
+    background: linear-gradient(145deg, var(--purple-900) 0%, #2e1260 50%, var(--purple-800) 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.pre-footer-cta-bg {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse at 15% 50%, rgba(234, 179, 8, 0.12) 0%, transparent 55%),
+        radial-gradient(ellipse at 85% 30%, rgba(124, 77, 204, 0.25) 0%, transparent 55%);
+    pointer-events: none;
+}
+
+.cta-inner {
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 32px;
+    padding: 40px 32px;
+    text-align: right;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-deco {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.cta-deco-1 {
+    width: 320px;
+    height: 320px;
+    background: radial-gradient(circle, rgba(124, 58, 237, 0.18) 0%, transparent 70%);
+    top: -120px;
+    right: -80px;
+}
+
+.cta-deco-2 {
+    width: 240px;
+    height: 240px;
+    background: radial-gradient(circle, rgba(234, 179, 8, 0.12) 0%, transparent 70%);
+    bottom: -80px;
+    left: -60px;
+}
+
+.cta-content { position: relative; z-index: 1; }
+
+.cta-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(37, 211, 102, 0.15);
+    border: 1px solid rgba(37, 211, 102, 0.3);
+    color: #25d366;
+    font-size: 0.9rem;
+    font-weight: 700;
+    padding: 8px 20px;
+    border-radius: 50px;
+    margin-bottom: 24px;
+}
+
+.cta-badge i { font-size: 1.1rem; }
+
+.cta-title {
+    font-size: 2.4rem;
+    font-weight: 900;
+    color: white;
+    margin-bottom: 16px;
+    line-height: 1.4;
+}
+
+.cta-highlight {
+    display: inline-block;
+    animation: ctaFloat 2.5s ease-in-out infinite;
+}
+
+@keyframes ctaFloat {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-6px); }
+}
+
+.cta-desc {
+    font-size: 1.05rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 36px;
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.8;
+}
+
+.cta-wa-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: #25d366;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 800;
+    padding: 18px 40px;
+    border-radius: 50px;
+    text-decoration: none;
+    box-shadow: 0 8px 30px rgba(37, 211, 102, 0.4);
+    transition: transform 0.3s, box-shadow 0.3s;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.cta-wa-btn i { font-size: 1.5rem; }
+
+.cta-wa-btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(37, 211, 102, 0.5);
+    color: white;
+}
+
+.cta-phone {
+    font-size: 0.9rem;
+    font-weight: 600;
+    opacity: 0.85;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 4px 14px;
+    border-radius: 50px;
+}
+
+@media (max-width: 767px) {
+    .cta-inner { text-align: center; padding: 40px 24px; }
+    .cta-title { font-size: 1.7rem; }
+    .cta-desc { margin-left: auto; margin-right: auto; }
+    .cta-wa-btn { padding: 16px 28px; font-size: 1rem; }
+}
+
+.cta-product-img {
+    max-height: 280px;
+    object-fit: contain;
+    filter: drop-shadow(0 20px 40px rgba(0,0,0,0.3));
+    animation: floatProduct 4s ease-in-out infinite;
+}
+
+@keyframes floatProduct {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
 
 /* ===== BOOKING SECTION ===== */
 .booking-section {
@@ -3381,7 +3511,7 @@ a.footer-contact-item:hover { color: var(--purple-600); }
 }
 
 .ba-slide-item {
-    flex: 0 0 calc(50% - 9px);
+    flex: 0 0 calc(60% - 9px);
     min-width: 0;
 }
 
@@ -3843,7 +3973,7 @@ a.footer-contact-item:hover { color: var(--purple-600); }
     }
 
     .ba-slide-item {
-        flex: 0 0 85%;
+        flex: 0 0 88%;
     }
 
     .review-lightbox {
@@ -3879,7 +4009,7 @@ a.footer-contact-item:hover { color: var(--purple-600); }
     }
 
     .ba-slide-item {
-        flex: 0 0 90%;
+        flex: 0 0 94%;
     }
 
     .reviews-nav-btn {
