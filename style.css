@@ -188,7 +188,7 @@ img {
 
 /* ===== NAVBAR ===== */
 .mc-navbar {
-    padding: 12px 0;
+    padding: 6px 0;
     transition: var(--transition);
     background: white;
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
@@ -197,14 +197,48 @@ img {
 .mc-navbar.scrolled {
     background: white;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    padding: 8px 0;
+    padding: 4px 0;
 }
 
 .mc-navbar .navbar-brand {
-    font-size: 1.4rem;
-    font-weight: 800;
-    color: var(--purple-800) !important;
-    letter-spacing: -0.5px;
+    padding: 0;
+    line-height: 1;
+    position: relative;
+}
+
+/* Glow ring behind the logo */
+.mc-navbar .navbar-brand::before {
+    content: '';
+    position: absolute;
+    inset: -6px;
+    border-radius: 20px;
+    background: radial-gradient(ellipse at center, rgba(124, 58, 237, 0.18) 0%, transparent 70%);
+    pointer-events: none;
+    transition: opacity 0.4s;
+    opacity: 0;
+}
+
+.mc-navbar .navbar-brand:hover::before {
+    opacity: 1;
+}
+
+.nav-logo {
+    height: 100px;
+    width: auto;
+    object-fit: contain;
+    display: block;
+    border-radius: 16px;
+    transition: transform 0.35s ease, filter 0.35s ease;
+    filter: drop-shadow(0 4px 12px rgba(124, 58, 237, 0.25));
+}
+
+.mc-navbar.scrolled .nav-logo {
+    height: 76px;
+}
+
+.nav-logo:hover {
+    transform: scale(1.06) translateY(-2px);
+    filter: drop-shadow(0 8px 20px rgba(124, 58, 237, 0.40));
 }
 
 .brand-icon {
@@ -218,6 +252,20 @@ img {
 
 .footer-logo-icon {
     color: var(--purple-400);
+}
+
+.footer-logo-img {
+    height: 90px;
+    width: auto;
+    object-fit: contain;
+    display: block;
+    border-radius: 14px;
+    transition: transform 0.3s ease, opacity 0.3s;
+}
+
+.footer-logo:hover .footer-logo-img {
+    transform: translateY(-3px);
+    opacity: 0.9;
 }
 
 .mc-navbar .nav-link {
@@ -2157,11 +2205,11 @@ img {
 }
 
 .comparison-modern-wrap {
-    background: rgba(20, 5, 40, 0.4);
+    background: rgba(20, 5, 40, 0.25);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border-radius: 32px;
-    box-shadow: 0 20px 80px rgba(0, 0, 0, 0.4), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+    box-shadow: 0 20px 80px rgba(0, 0, 0, 0.3), inset 0 0 0 1px rgba(255, 255, 255, 0.07);
     padding: 24px;
     position: relative;
     overflow: hidden;
@@ -2171,7 +2219,7 @@ img {
     display: grid;
     grid-template-columns: 1.2fr 1.6fr 1fr;
     align-items: center;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
     transition: var(--transition);
     position: relative;
 }
@@ -2224,11 +2272,11 @@ img {
 
 .mc-cell {
     justify-content: space-between;
-    background: linear-gradient(180deg, rgba(124, 58, 237, 0.15) 0%, rgba(94, 40, 147, 0.15) 100%);
+    background: linear-gradient(180deg, rgba(124, 58, 237, 0.20) 0%, rgba(94, 40, 147, 0.18) 100%);
     color: white;
     margin: 0;
-    border-left: 1px solid rgba(124, 58, 237, 0.3);
-    border-right: 1px solid rgba(124, 58, 237, 0.3);
+    border-left: 1px solid rgba(124, 58, 237, 0.20);
+    border-right: 1px solid rgba(124, 58, 237, 0.20);
     transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
     position: relative;
     z-index: 2;
@@ -2288,7 +2336,7 @@ img {
 
 .other-cell {
     justify-content: space-between;
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.55);
     padding-right: 30px;
 }
 
@@ -3466,8 +3514,14 @@ a.footer-contact-item:hover { color: var(--purple-600); }
 /* ===== REVIEWS MULTI-IMAGE SLIDER ===== */
 
 .reviews-section {
-    background: linear-gradient(180deg, #faf8ff 0%, #f3eeff 50%, #faf8ff 100%);
+    background: #fff;
     overflow: hidden;
+    box-shadow:
+        0 -20px 60px rgba(100, 60, 200, 0.10),
+        0 20px 60px rgba(100, 60, 200, 0.10);
+    margin: 8px 0;
+    border-top: 1px solid rgba(124, 58, 237, 0.08);
+    border-bottom: 1px solid rgba(124, 58, 237, 0.08);
 }
 
 /* --- Slider Container --- */
