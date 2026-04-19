@@ -540,6 +540,47 @@ img {
 
 /* ===== HERO — RESPONSIVE (MOBILE FIX) ===== */
 
+/* --- Desktop (≥992px) - Reset to default --- */
+@media (min-width: 992px) {
+    .hero-section {
+        min-height: auto !important;
+        padding-top: 110px !important;
+        padding-bottom: 60px !important;
+    }
+
+    .hero-content {
+        padding: 40px !important;
+        text-align: right !important;
+        border-radius: 24px !important;
+    }
+
+    .hero-image-wrapper {
+        padding: 40px !important;
+    }
+
+    .hero-product-img {
+        max-height: 480px !important;
+    }
+
+    .hero-glow {
+        width: 350px !important;
+        height: 350px !important;
+    }
+
+    .hero-btn {
+        width: auto !important;
+        max-width: none !important;
+    }
+
+    .hero-cta-group {
+        align-items: flex-start !important;
+    }
+
+    .hero-trust-badges {
+        justify-content: flex-start !important;
+    }
+}
+
 /* --- Tablet (≤991px) --- */
 @media (max-width: 991.98px) {
     .hero-section {
@@ -768,6 +809,77 @@ img {
     display: flex;
     flex-direction: column;
     gap: 14px;
+    position: relative;
+}
+
+/* Swipe Hint Badge */
+.swipe-hint-badge {
+    position: absolute;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 8px 20px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--purple-700);
+    box-shadow: 0 4px 15px rgba(107, 61, 173, 0.2);
+    z-index: 5;
+    animation: swipeHintPulse 2s ease-in-out infinite;
+    border: 2px solid var(--purple-200);
+}
+
+.swipe-hint-badge i {
+    color: var(--purple-600);
+    font-size: 1rem;
+}
+
+.swipe-hint-badge .bi-arrow-left-right {
+    animation: swipeArrowMove 1.5s ease-in-out infinite;
+}
+
+@keyframes swipeHintPulse {
+    0%, 100% {
+        transform: translateX(-50%) scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: translateX(-50%) scale(1.05);
+        opacity: 0.9;
+    }
+}
+
+@keyframes swipeArrowMove {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(5px);
+    }
+}
+
+/* Hide hint after first interaction */
+.hero-carousel-wrap.interacted .swipe-hint-badge {
+    animation: fadeOut 0.5s ease-out forwards;
+}
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+/* Hide on desktop */
+@media (min-width: 992px) {
+    .swipe-hint-badge {
+        display: none;
+    }
 }
 
 .hero-carousel-caption-top {
@@ -792,25 +904,74 @@ img {
     border-radius: 20px;
     overflow: hidden;
     max-width: 100%;
+    margin: 0 auto;
     user-select: none;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
+    position: relative;
+}
+
+/* Swipe Hint Overlay */
+.hero-carousel::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, 
+        rgba(107, 61, 173, 0.15) 0%, 
+        transparent 20%, 
+        transparent 80%, 
+        rgba(107, 61, 173, 0.15) 100%);
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.6;
+}
+
+.hero-carousel:hover::after {
+    opacity: 0.3;
 }
 
 .hero-carousel-inner {
     border-radius: 20px;
+    height: 100%;
 }
 
 .hero-carousel-item {
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 100%;
+}
+
+.carousel-item {
+    transition: opacity 0.6s ease-in-out !important;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Smooth fade transition */
+.carousel-item.active {
+    opacity: 1;
+}
+
+.carousel-item-next,
+.carousel-item-prev {
+    opacity: 0;
+}
+
+.carousel-item-start,
+.carousel-item-end {
+    opacity: 1;
 }
 
 .hero-slide-img {
     width: 100%;
-    height: auto;
+    height: 100%;
     max-height: 500px;
     object-fit: contain;
     object-position: center;
@@ -951,6 +1112,12 @@ img {
 }
 
 /* Responsive */
+@media (min-width: 992px) {
+    .hero-slide-img {
+        max-height: 500px !important;
+    }
+}
+
 @media (max-width: 991.98px) {
     .hero-slide-img {
         max-height: 400px;
@@ -1503,10 +1670,9 @@ img {
 }
 
 .ing-simple-card.featured-simple {
-    border-color: rgba(224, 168, 32, 0.5);
-    /* Soft gold border */
+    border-color: rgba(255, 255, 255, 0.08);
     background: rgba(255, 255, 255, 0.06);
-    box-shadow: 0 8px 32px rgba(224, 168, 32, 0.15);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
 }
 
 .ing-simple-img-wrap {

@@ -438,6 +438,16 @@ document.addEventListener('DOMContentLoaded', () => {
             if (pvScrollPos > maxPv) pvScrollPos = maxPv;
             updatePvSlider();
         }
+        
+        // Fix hero carousel on resize
+        const heroCarousel = document.getElementById('heroCarousel');
+        if (heroCarousel) {
+            const carouselItems = heroCarousel.querySelectorAll('.carousel-item');
+            carouselItems.forEach(item => {
+                item.style.removeProperty('transform');
+                item.style.removeProperty('transition');
+            });
+        }
     });
 });
 
@@ -917,17 +927,26 @@ document.addEventListener('DOMContentLoaded', () => {
     const heroCarousel = document.getElementById('heroCarousel');
     if (!heroCarousel) return;
     
+    const carouselWrap = document.querySelector('.hero-carousel-wrap');
     const bsCarousel = bootstrap.Carousel.getInstance(heroCarousel) || new bootstrap.Carousel(heroCarousel);
     
     let startX = 0;
     let isDragging = false;
     let hasMoved = false;
     
+    // Hide hint on first interaction
+    const hideHint = () => {
+        if (carouselWrap) {
+            carouselWrap.classList.add('interacted');
+        }
+    };
+    
     // Touch events
     heroCarousel.addEventListener('touchstart', (e) => {
         startX = e.touches[0].clientX;
         isDragging = true;
         hasMoved = false;
+        hideHint();
     }, { passive: true });
     
     heroCarousel.addEventListener('touchmove', (e) => {
@@ -969,6 +988,7 @@ document.addEventListener('DOMContentLoaded', () => {
         mouseActive = true;
         mouseHasMoved = false;
         heroCarousel.style.cursor = 'grabbing';
+        hideHint();
         e.preventDefault();
     });
     
@@ -1013,4 +1033,48 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Set initial cursor
     heroCarousel.style.cursor = 'grab';
+    
+    // Hide hint on arrow click
+    const arrows = document.querySelectorAll('.hero-carousel-ctrl');
+    arrows.forEach(arrow => {
+        arrow.addEventListener('click', hideHint);
+    });
+});
+
+
+// ===== Fix Carousel Width Based on First Image =====
+document.addEventListener('DOMContentLoaded', () => {
+    const heroCarousel = document.getElementById('heroCarousel');
+    if (!heroCarousel) return;
+    
+    const firstImage = heroCarousel.querySelector('.carousel-item.active .hero-slide-img');
+    
+    if (firstImage) {
+        // Wait for image to load
+        if (firstImage.complete) {
+            setCarouselWidth();
+        } else {
+            firstImage.addEventListener('load', setCarouselWidth);
+        }
+        
+        function setCarouselWidth() {
+            const imgWidth = firstImage.naturalWidth;
+            const imgHeight = firstImage.naturalHeight;
+            const aspectRatio = imgWidth / imgHeight;
+            
+            // Set max-height and calculate width based on aspect ratio
+            const maxHeight = 500;
+            const calculatedWidth = maxHeight * aspectRatio;
+            
+            heroCarousel.style.maxWidth = calculatedWidth + 'px';
+            heroCarousel.style.width = '100%';
+            
+            // On window resize, recalculate
+            window.addEventListener('resize', () => {
+                const currentHeight = firstImage.offsetHeight;
+                const newWidth = currentHeight * aspectRatio;
+                heroCarousel.style.maxWidth = newWidth + 'px';
+            });
+        }
+    }
 });
