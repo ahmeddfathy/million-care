@@ -61,27 +61,26 @@
     <section id="hero" class="hero-section">
         <div class="hero-gradient-overlay"></div>
         <div class="container position-relative">
-            <div class="row align-items-center hero-row g-4 g-lg-5">
-                <div class="col-lg-6 order-2 order-lg-1" data-aos="fade-up" data-aos-duration="1000">
-                    <div class="hero-content text-center text-lg-start">
+            <div class="row align-items-center g-4 g-lg-5">
+
+                <!-- Content — RIGHT on desktop -->
+                <div class="col-12 col-lg-5 order-1 order-lg-1" data-aos="fade-up" data-aos-duration="1000">
+                    <div class="hero-content text-center text-lg-end">
                         <span class="hero-badge">
                             <i class="bi bi-stars"></i> تريتمنت برازيلي — بتقنية Heat Protection
                         </span>
-                        <h1 class="hero-title">
-                            تعبتي من الهيشان والتقصف؟
-                            <span class="text-gold">شعرك هيبقا حرير من أول جلسة وانتي في بيتك! </span>
-                        </h1>
-                        <p class="hero-subtitle">
-                            Million Care التريتمنت البرازيلي الأول بتقنية (Heat Protection). بيفرد، بيعالج، وبيرجع لشعرك
-                            حيويته بدون نقطة فورمالين. دلّعي شعرك وخلي المتخصصة تجيلك لحد عندك.
+                        <p class="hero-formula-text">
+                            تركيبة متطورة بالكولاجين + الأرجان + الكافيار مع تقنية
+                            <span class="hero-formula-highlight">Heat Protection</span>
+                            لحماية شعرك أثناء الفرد
                         </p>
-                        <div class="hero-cta-group">
+                        <div class="hero-cta-group align-items-center align-items-lg-end">
                             <a href="https://wa.me/201113109933?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%B9%D8%A7%D9%8A%D8%B2%D8%A9%20%D8%A3%D8%AD%D8%AC%D8%B2%20%D8%AC%D9%84%D8%B3%D8%A9%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%A8%D9%8A%D8%AA"
                                 target="_blank" class="btn btn-gold btn-lg hero-btn pulse-animation" id="heroCTA">
                                 <i class="bi bi-calendar-check"></i>
                                 احجزي جلستك في البيت — الدفع بعد النتيجة
                             </a>
-                            <div class="hero-trust-badges">
+                            <div class="hero-trust-badges justify-content-center justify-content-lg-end">
                                 <span><i class="bi bi-shield-check"></i> بدون فورمالين</span>
                                 <span><i class="bi bi-house-heart"></i> خدمة لبيتك</span>
                                 <span><i class="bi bi-cash-coin"></i> الدفع عند الاستلام</span>
@@ -89,73 +88,96 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6 order-1 order-lg-2 text-center" data-aos="fade-up" data-aos-duration="1000"
-                    data-aos-delay="300">
-                    <div class="hero-image-wrapper">
-                        <div class="hero-glow"></div>
-                        <img src="images/hero-product-nobg.png" alt="Million Care Brazilian Treatment"
-                            class="hero-product-img" loading="eager">
-                        <div class="floating-badge badge-1">
-                            <i class="bi bi-star-fill text-warning"></i> الأكثر مبيعاً
-                        </div>
-                        <div class="floating-badge badge-2">
-                            <i class="bi bi-heart-fill text-danger"></i> +5000 عميلة راضية
+
+                <!-- Carousel — left column on desktop, bottom on mobile -->
+                <div class="col-12 col-lg-7 order-2 order-lg-1" data-aos="fade-up" data-aos-duration="1000"
+                    data-aos-delay="200">
+                    <div class="hero-carousel-wrap">
+                        <div id="heroCarousel" class="carousel slide hero-carousel" data-bs-ride="carousel"
+                            data-bs-interval="3000">
+                            <div class="carousel-indicators hero-carousel-indicators">
+                                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0"
+                                    class="active"></button>
+                                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+                                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+                                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="3"></button>
+                            </div>
+                            <div class="carousel-inner hero-carousel-inner">
+                                <div class="carousel-item active">
+                                    <img src="images/hero-image/hero.jpeg" class="hero-slide-img"
+                                        alt="نتيجة Million Care 1" loading="eager">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="images/hero-image/hero2.jpg" class="hero-slide-img"
+                                        alt="نتيجة Million Care 2" loading="lazy">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="images/hero-image/hero3.jpg" class="hero-slide-img"
+                                        alt="نتيجة Million Care 3" loading="lazy">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="images/hero-image/hero4.jpg" class="hero-slide-img"
+                                        alt="نتيجة Million Care 4" loading="lazy">
+                                </div>
+                            </div>
+                            <button class="carousel-control-prev hero-carousel-ctrl" type="button"
+                                data-bs-target="#heroCarousel" data-bs-slide="prev">
+                                <i class="bi bi-chevron-right"></i>
+                            </button>
+                            <button class="carousel-control-next hero-carousel-ctrl" type="button"
+                                data-bs-target="#heroCarousel" data-bs-slide="next">
+                                <i class="bi bi-chevron-left"></i>
+                            </button>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
 
-        <div class="hero-wave">
-            <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
-                <path d="M0,64 C480,120 960,0 1440,64 L1440,120 L0,120 Z" fill="#ffffff"></path>
-            </svg>
-        </div>
     </section>
 
     <!-- ============ PROBLEM vs SOLUTION ============ -->
     <section id="problem" class="section-padding bg-white">
         <div class="container">
             <div class="text-center mb-5" data-aos="fade-up">
-                <span class="section-badge">بتعاني من إيه؟</span>
-                <h2 class="section-title">لو شعرك بيأذيكي يومياً.. اقري الكلام ده كويس</h2>
-                <p class="section-subtitle">الهيشان والتقصف وشعر بايظ من الحرارة — مش قدرك. دلوقتي فيه حل حقيقي بييجيلك
-                    البيت.
-                </p>
+                <span class="section-badge">قبل ما تقرري… اعرفي الفرق 💛</span>
+                <h2 class="section-title">مش كل المنتجات زي بعض اعرفي الفرق الحقيقي</h2>
+                <p class="section-subtitle">قبل ما تجربي أي منتج، لازم تعرفي بالظبط إيه اللي بتحطيه على شعرك.</p>
             </div>
             <div class="row g-4">
                 <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
-                    <div class="problem-card before-card">
+                    <div class="problem-card after-card">
                         <div class="problem-card-header">
-                            <div class="problem-icon-wrap danger">
-                                <i class="bi bi-emoji-frown"></i>
+                            <div class="problem-icon-wrap success">
+                                <i class="bi bi-stars"></i>
                             </div>
-                            <h3>الواقع اللي بتعيشيه</h3>
+                            <h3>✨ Million Care Treatment</h3>
                         </div>
                         <ul class="problem-list">
-                            <li><i class="bi bi-x-circle-fill text-danger"></i> شعر هايش وجاف مهما عملتيله</li>
-                            <li><i class="bi bi-x-circle-fill text-danger"></i> المكواة بتخليه أكثر تقصفاً</li>
-                            <li><i class="bi bi-x-circle-fill text-danger"></i> منتجات جربتيها ما أثرتش</li>
-                            <li><i class="bi bi-x-circle-fill text-danger"></i> الصالون تعب وغالي وزحمته بتضيع وقتك</li>
-                            <li><i class="bi bi-x-circle-fill text-danger"></i> الفرد بيروح بعد أسبوع</li>
+                            <li><i class="bi bi-check-circle-fill text-success"></i> منتج برازيلي أصلي معروف المصدر</li>
+                            <li><i class="bi bi-check-circle-fill text-success"></i> آمن على الشعر (بدون فورمالين)</li>
+                            <li><i class="bi bi-check-circle-fill text-success"></i> مزوّد بتقنية Heat Protection لحماية
+                                الشعر من الحرارة</li>
+                            <li><i class="bi bi-check-circle-fill text-success"></i> تركيبة غنية بالكافيار + الكولاجين +
+                                الأرجان</li>
+                            <li><i class="bi bi-check-circle-fill text-success"></i> تحت إشراف شركة + متابعة + متخصصة
+                                لحد البيت</li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
-                    <div class="problem-card after-card">
+                    <div class="problem-card before-card">
                         <div class="problem-card-header">
-                            <div class="problem-icon-wrap success">
-                                <i class="bi bi-emoji-heart-eyes"></i>
+                            <div class="problem-icon-wrap danger">
+                                <i class="bi bi-exclamation-triangle-fill"></i>
                             </div>
-                            <h3>بعد Million Care</h3>
+                            <h3>⚠️ المنتجات المجهولة أو الرخيصة</h3>
                         </div>
                         <ul class="problem-list">
-                            <li><i class="bi bi-check-circle-fill text-success"></i> شعر ناعم وبيلمع من أول جلسة</li>
-                            <li><i class="bi bi-check-circle-fill text-success"></i> Heat Protection بتحمي كل شعرة</li>
-                            <li><i class="bi bi-check-circle-fill text-success"></i> منتج برازيلي أصلي — بدون فورمالين
-                            </li>
-                            <li><i class="bi bi-check-circle-fill text-success"></i> متخصصة بتيجي لحد بيتك</li>
-                            <li><i class="bi bi-check-circle-fill text-success"></i> النتيجة بتدوم شهور مع العناية</li>
+                            <li><i class="bi bi-x-circle-fill text-danger"></i> ممكن تسبب تلف أو تساقط مع الوقت</li>
+                            <li><i class="bi bi-x-circle-fill text-danger"></i> مصدر غير مضمون</li>
+                            <li><i class="bi bi-x-circle-fill text-danger"></i> بدون متابعة أو أمان في الاستخدام</li>
                         </ul>
                     </div>
                 </div>
@@ -575,20 +597,153 @@
             <div class="container">
                 <div class="text-center mb-5" data-aos="fade-up">
                     <span class="section-badge">عروضنا</span>
-                    <h2 class="section-title">اختاري الحجم المناسب ليكي <i class="bi bi-box-seam-fill text-primary"></i>
+                    <h2 class="section-title">اختاري الحجم المناسب ليكي
                     </h2>
                     <p class="section-subtitle">المنتج متاح بأحجام مختلفة — كلهم أصلي وكلهم مع تقنية Heat Protection</p>
                 </div>
-                <div class="row g-4 justify-content-center align-items-stretch">
+                <div class="row g-3 g-md-4 justify-content-center align-items-stretch">
+
+                    <!-- Item 1: 100g -->
+                    <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+                        <div class="pricing-card">
+                            <div class="pricing-ribbon"><span><i class="bi bi-scissors"></i> شعر قصير</span></div>
+                            <div class="pricing-img-wrap">
+                                <img src="images/hero-product-nobg.png" alt="تريتمنت 100 جرام" loading="lazy">
+                            </div>
+                            <div class="pricing-body">
+                                <h3 class="pricing-title">100 جرام</h3>
+                                <p class="pricing-desc">شعر قصير</p>
+                                <ul class="pricing-features">
+                                    <li><i class="bi bi-check-circle-fill"></i> Heat Protection</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> بدون فورمالين</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> جلسة منزلية</li>
+                                </ul>
+                                <div class="pricing-price-box">
+                                    <span class="pricing-price">750<small>ج.م</small></span>
+                                </div>
+                                <a href="https://wa.me/201113109933?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%B9%D8%A7%D9%8A%D8%B2%D8%A9%20%D8%A3%D8%AD%D8%AC%D8%B2%20%D8%AC%D9%84%D8%B3%D8%A9%20100%20%D8%AC%D8%B1%D8%A7%D9%85"
+                                    target="_blank" class="btn btn-gold w-100 pricing-cta">
+                                    <i class="bi bi-whatsapp"></i> احجزي
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 2: 150g -->
+                    <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="150">
+                        <div class="pricing-card">
+                            <div class="pricing-ribbon"><span><i class="bi bi-align-bottom"></i> لحد الكتف</span></div>
+                            <div class="pricing-img-wrap">
+                                <img src="images/hero-product-nobg.png" alt="تريتمنت 150 جرام" loading="lazy">
+                            </div>
+                            <div class="pricing-body">
+                                <h3 class="pricing-title">150 جرام</h3>
+                                <p class="pricing-desc">لحد الكتف</p>
+                                <ul class="pricing-features">
+                                    <li><i class="bi bi-check-circle-fill"></i> Heat Protection</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> بدون فورمالين</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> جلسة منزلية</li>
+                                </ul>
+                                <div class="pricing-price-box">
+                                    <span class="pricing-price">1125<small>ج.م</small></span>
+                                </div>
+                                <a href="https://wa.me/201113109933?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%B9%D8%A7%D9%8A%D8%B2%D8%A9%20%D8%A3%D8%AD%D8%AC%D8%B2%20%D8%AC%D9%84%D8%B3%D8%A9%20150%20%D8%AC%D8%B1%D8%A7%D9%85"
+                                    target="_blank" class="btn btn-gold w-100 pricing-cta">
+                                    <i class="bi bi-whatsapp"></i> احجزي
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 3: 200g (Featured) -->
+                    <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+                        <div class="pricing-card pricing-featured">
+                            <div class="pricing-ribbon featured-ribbon"><span><i class="bi bi-fire"></i> الأكثر
+                                    طلباً</span></div>
+                            <div class="pricing-img-wrap">
+                                <img src="images/hero-product-nobg.png" alt="تريتمنت 200 جرام" loading="lazy">
+                            </div>
+                            <div class="pricing-body">
+                                <h3 class="pricing-title">200 جرام</h3>
+                                <p class="pricing-desc">لحد نص الظهر</p>
+                                <ul class="pricing-features">
+                                    <li><i class="bi bi-check-circle-fill"></i> Heat Protection</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> بدون فورمالين</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> جلسة منزلية</li>
+                                </ul>
+                                <div class="pricing-price-box">
+                                    <span class="pricing-price">1500<small>ج.م</small></span>
+                                </div>
+                                <a href="https://wa.me/201113109933?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%B9%D8%A7%D9%8A%D8%B2%D8%A9%20%D8%A3%D8%AD%D8%AC%D8%B2%20%D8%AC%D9%84%D8%B3%D8%A9%20200%20%D8%AC%D8%B1%D8%A7%D9%85"
+                                    target="_blank" class="btn btn-gold w-100 pricing-cta">
+                                    <i class="bi bi-whatsapp"></i> احجزي
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 4: 250g -->
+                    <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="250">
+                        <div class="pricing-card">
+                            <div class="pricing-ribbon"><span><i class="bi bi-align-middle"></i> لحد آخر الظهر</span>
+                            </div>
+                            <div class="pricing-img-wrap">
+                                <img src="images/hero-product-nobg.png" alt="تريتمنت 250 جرام" loading="lazy">
+                            </div>
+                            <div class="pricing-body">
+                                <h3 class="pricing-title">250 جرام</h3>
+                                <p class="pricing-desc">لحد آخر الظهر</p>
+                                <ul class="pricing-features">
+                                    <li><i class="bi bi-check-circle-fill"></i> Heat Protection</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> بدون فورمالين</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> جلسة منزلية</li>
+                                </ul>
+                                <div class="pricing-price-box">
+                                    <span class="pricing-price">1875<small>ج.م</small></span>
+                                </div>
+                                <a href="https://wa.me/201113109933?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%B9%D8%A7%D9%8A%D8%B2%D8%A9%20%D8%A3%D8%AD%D8%AC%D8%B2%20%D8%AC%D9%84%D8%B3%D8%A9%20250%20%D8%AC%D8%B1%D8%A7%D9%85"
+                                    target="_blank" class="btn btn-gold w-100 pricing-cta">
+                                    <i class="bi bi-whatsapp"></i> احجزي
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 5: 300g -->
+                    <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+                        <div class="pricing-card">
+                            <div class="pricing-ribbon"><span><i class="bi bi-stars"></i> شعر طويل</span></div>
+                            <div class="pricing-img-wrap">
+                                <img src="images/hero-product-nobg.png" alt="تريتمنت 300 جرام" loading="lazy">
+                            </div>
+                            <div class="pricing-body">
+                                <h3 class="pricing-title">300 جرام</h3>
+                                <p class="pricing-desc">شعر طويل وتقيل</p>
+                                <ul class="pricing-features">
+                                    <li><i class="bi bi-check-circle-fill"></i> Heat Protection</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> بدون فورمالين</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> جلسة منزلية</li>
+                                </ul>
+                                <div class="pricing-price-box">
+                                    <span class="pricing-price">2250<small>ج.م</small></span>
+                                </div>
+                                <a href="https://wa.me/201113109933?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%B9%D8%A7%D9%8A%D8%B2%D8%A9%20%D8%A3%D8%AD%D8%AC%D8%B2%20%D8%AC%D9%84%D8%B3%D8%A9%20300%20%D8%AC%D8%B1%D8%A7%D9%85"
+                                    target="_blank" class="btn btn-gold w-100 pricing-cta">
+                                    <i class="bi bi-whatsapp"></i> احجزي
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- Offer 1: Care Set -->
-                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="350">
                         <div class="pricing-card">
                             <div class="pricing-ribbon"><span><i class="bi bi-tags-fill"></i> عرض خاص</span></div>
                             <div class="pricing-img-wrap">
                                 <img src="images/offer-care-set.jpeg" alt="مجموعة العناية" loading="lazy">
                             </div>
                             <div class="pricing-body">
-                                <h3 class="pricing-title">مجموعة العناية المتكاملة</h3>
+                                <h3 class="pricing-title">مجموعة العناية</h3>
                                 <p class="pricing-desc">شامبو + بلسم + حمام كريم + سيرم</p>
                                 <ul class="pricing-features">
                                     <li><i class="bi bi-check-circle-fill"></i> عناية شاملة للشعر</li>
@@ -601,16 +756,16 @@
                                     <span class="pricing-save"><i class="bi bi-arrow-down-circle-fill"></i> وفري
                                         50%</span>
                                 </div>
-                                <a href="https://wa.me/201113109933?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%B9%D8%A7%D9%8A%D8%B2%D8%A9%20%D8%A3%D8%AD%D8%AC%D8%B2%20%D9%85%D8%AC%D9%85%D9%88%D8%B9%D8%A9%20%D8%A7%D9%84%D8%B9%D9%86%D8%A7%D9%8A%D8%A9%20%D8%A7%D9%84%D9%85%D8%AA%D9%83%D8%A7%D9%85%D9%84%D8%A9"
-                                    target="_blank" class="btn btn-gold btn-lg w-100 pricing-cta">
-                                    <i class="bi bi-cart-check"></i> احجزي الآن
+                                <a href="https://wa.me/201113109933?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%B9%D8%A7%D9%8A%D8%B2%D8%A9%20%D8%A3%D8%AD%D8%AC%D8%B2%20%D9%85%D8%AC%D9%85%D9%88%D8%B9%D8%A9%20%D8%A7%D9%84%D8%B9%D9%86%D8%A7%D9%8A%D8%A9"
+                                    target="_blank" class="btn btn-gold w-100 pricing-cta">
+                                    <i class="bi bi-whatsapp"></i> احجزي
                                 </a>
                             </div>
                         </div>
                     </div>
 
                     <!-- Offer 2: 500g (Featured) -->
-                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="400">
                         <div class="pricing-card pricing-featured">
                             <div class="pricing-ribbon featured-ribbon"><span><i class="bi bi-fire"></i> الأكثر
                                     طلباً</span></div>
@@ -618,8 +773,8 @@
                                 <img src="images/offer-500g.jpeg" alt="عرض 500 جرام" loading="lazy">
                             </div>
                             <div class="pricing-body">
-                                <h3 class="pricing-title">عرض الـ 500 جرام</h3>
-                                <p class="pricing-desc">يكفي فردين أو 3 أفراد</p>
+                                <h3 class="pricing-title">عرض 500 جرام</h3>
+                                <p class="pricing-desc">يكفي 2-3 أفراد</p>
                                 <ul class="pricing-features">
                                     <li><i class="bi bi-check-circle-fill"></i> تقنية Heat Protection</li>
                                     <li><i class="bi bi-check-circle-fill"></i> يكفي 2-3 أفراد</li>
@@ -629,24 +784,24 @@
                                 <div class="pricing-price-box">
                                     <span class="pricing-price">2500<small>ج.م</small></span>
                                 </div>
-                                <a href="https://wa.me/201113109933?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%B9%D8%A7%D9%8A%D8%B2%D8%A9%20%D8%A3%D8%AD%D8%AC%D8%B2%20%D8%B9%D8%B1%D8%B6%20%D8%A7%D9%84%D9%80%20500%20%D8%AC%D8%B1%D8%A7%D9%85"
-                                    target="_blank" class="btn btn-gold btn-lg w-100 pricing-cta">
-                                    <i class="bi bi-cart-check"></i> احجزي الآن
+                                <a href="https://wa.me/201113109933?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%B9%D8%A7%D9%8A%D8%B2%D8%A9%20%D8%A3%D8%AD%D8%AC%D8%B2%20%D8%B9%D8%B1%D8%B6%20500%20%D8%AC%D8%B1%D8%A7%D9%85"
+                                    target="_blank" class="btn btn-gold w-100 pricing-cta">
+                                    <i class="bi bi-whatsapp"></i> احجزي
                                 </a>
                             </div>
                         </div>
                     </div>
 
                     <!-- Offer 3: 1000g -->
-                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="450">
                         <div class="pricing-card">
                             <div class="pricing-ribbon"><span><i class="bi bi-star-fill"></i> توفير العيلة</span></div>
                             <div class="pricing-img-wrap">
                                 <img src="images/offer-1000g.jpeg" alt="عرض اللتر" loading="lazy">
                             </div>
                             <div class="pricing-body">
-                                <h3 class="pricing-title">عرض اللتر (1000 جرام)</h3>
-                                <p class="pricing-desc">يكفي من 8 إلى 10 أفراد</p>
+                                <h3 class="pricing-title">عرض اللتر (1000 جم)</h3>
+                                <p class="pricing-desc">يكفي 8-10 أفراد</p>
                                 <ul class="pricing-features">
                                     <li><i class="bi bi-check-circle-fill"></i> تقنية Heat Protection</li>
                                     <li><i class="bi bi-check-circle-fill"></i> يكفي 8-10 أفراد</li>
@@ -657,12 +812,13 @@
                                     <span class="pricing-price">3400<small>ج.م</small></span>
                                 </div>
                                 <a href="https://wa.me/201113109933?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%B9%D8%A7%D9%8A%D8%B2%D8%A9%20%D8%A3%D8%AD%D8%AC%D8%B2%20%D8%B9%D8%B1%D8%B6%20%D8%A7%D9%84%D9%84%D8%AA%D8%B1"
-                                    target="_blank" class="btn btn-gold btn-lg w-100 pricing-cta">
-                                    <i class="bi bi-cart-check"></i> احجزي الآن
+                                    target="_blank" class="btn btn-gold w-100 pricing-cta">
+                                    <i class="bi bi-whatsapp"></i> احجزي
                                 </a>
                             </div>
                         </div>
                     </div>
+
                 </div>
                 <!-- Trust & Final CTA -->
                 <div class="results-cta-wrap" data-aos="fade-up">
@@ -1372,7 +1528,8 @@
                         <div class="cta-content">
                             <span class="cta-badge"><i class="bi bi-whatsapp"></i> تواصلي معنا</span>
                             <h2 class="cta-title">عندك سؤال؟ ابعتيلنا دلوقتي <span class="cta-highlight">✨</span></h2>
-                            <p class="cta-desc ms-lg-auto me-lg-0 mx-auto">فريقنا موجود يساعدك في أي استفسار عن المنتج أو الحجز — ردنا سريع وإجابتنا صريحة</p>
+                            <p class="cta-desc ms-lg-auto me-lg-0 mx-auto">فريقنا موجود يساعدك في أي استفسار عن المنتج
+                                أو الحجز — ردنا سريع وإجابتنا صريحة</p>
                             <a href="https://wa.me/201113109933?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%B9%D9%86%D8%AF%D9%8A%20%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1"
                                 target="_blank" class="cta-wa-btn">
                                 <i class="bi bi-whatsapp"></i>
@@ -1382,7 +1539,8 @@
                         </div>
                     </div>
                     <div class="col-lg-5 text-center">
-                        <img src="images/hero-product-nobg.png" alt="Million Care Product" class="cta-product-img img-fluid">
+                        <img src="images/hero-product-nobg.png" alt="Million Care Product"
+                            class="cta-product-img img-fluid">
                     </div>
                 </div>
 
