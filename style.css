@@ -284,14 +284,14 @@ img {
 /* ===== HERO SECTION ===== */
 .hero-section {
     min-height: auto;
-    background: #ffffff;
+    background: #faf8fc;
     position: relative;
     overflow: hidden;
     display: flex;
     align-items: center;
     padding-top: 110px;
     padding-bottom: 60px;
-    border-bottom: 1px solid #f0eaf8;
+    border-bottom: 1px solid rgba(124, 58, 237, 0.05);
 }
 
 .hero-gradient-overlay {
@@ -338,7 +338,15 @@ img {
 }
 
 .hero-content {
-    padding: 40px 0;
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 24px;
+    box-shadow: 0 15px 40px rgba(100, 60, 200, 0.06);
+    border: 1px solid rgba(124, 58, 237, 0.08);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .hero-badge {
@@ -374,17 +382,12 @@ img {
 
 /* Hero Formula Text */
 .hero-formula-text {
-    font-size: 0.97rem;
+    font-size: 1.05rem;
     font-weight: 600;
     color: var(--text-dark);
     line-height: 1.8;
-    margin-bottom: 28px;
-    padding: 14px 20px;
-    background: #ffffff;
-    border: 1px solid var(--purple-100);
-    border-right: 4px solid var(--purple-500);
-    border-radius: 12px;
-    box-shadow: 0 4px 16px rgba(124, 77, 204, 0.07);
+    margin-bottom: 30px;
+    padding: 0;
 }
 
 .hero-formula-highlight {
@@ -621,7 +624,8 @@ img {
     }
 
     .hero-content {
-        padding: 12px 4px 24px;
+        padding: 30px 20px;
+        border-radius: 20px;
     }
 
     .hero-badge {
@@ -785,7 +789,6 @@ img {
 .hero-carousel {
     border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 8px 32px rgba(100, 60, 200, 0.10);
 }
 
 .hero-carousel-inner {
@@ -818,7 +821,7 @@ img {
 }
 
 .hero-carousel-indicators button.active {
-    background: var(--gold-400);
+    background: #ffffff;
     width: 22px;
     border-radius: 4px;
 }
