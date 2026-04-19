@@ -1461,23 +1461,28 @@ img {
 
 /* --- Simple Ingredient Cards --- */
 .ing-simple-card {
-    background: white;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border-radius: var(--radius-xl);
     overflow: hidden;
-    box-shadow: var(--shadow-md);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
     transition: var(--transition);
-    border: 2px solid transparent;
+    border: 1px solid rgba(255, 255, 255, 0.08);
     height: 100%;
 }
 
 .ing-simple-card:hover {
     transform: translateY(-8px);
-    box-shadow: var(--shadow-xl);
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.3);
+    border-color: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.06);
 }
 
 .ing-simple-card.featured-simple {
-    border-color: var(--gold-500);
-    box-shadow: 0 6px 30px rgba(234, 179, 8, 0.15);
+    border-color: rgba(224, 168, 32, 0.5); /* Soft gold border */
+    background: rgba(255, 255, 255, 0.06);
+    box-shadow: 0 8px 32px rgba(224, 168, 32, 0.15);
 }
 
 .ing-simple-img-wrap {
@@ -1485,11 +1490,11 @@ img {
     height: 280px;
     overflow: hidden;
     position: relative;
-    background: #ffffff;
+    background: transparent;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 10px;
+    padding: 20px;
 }
 
 .ing-simple-img {
@@ -1498,40 +1503,43 @@ img {
     object-fit: contain;
     display: block;
     transition: transform 0.6s ease;
+    filter: drop-shadow(0 15px 25px rgba(0,0,0,0.4)); /* Makes images float */
+    border-radius: 12px; /* Softens corners if it's a solid JPEG */
 }
 
 .ing-simple-card:hover .ing-simple-img {
-    transform: scale(1.06);
+    transform: scale(1.08) translateY(-5px);
 }
 
 .ing-simple-body {
-    padding: 24px;
+    padding: 0 24px 30px;
     text-align: center;
 }
 
 .ing-simple-badge {
     display: inline-block;
-    background: var(--bg-light-purple);
-    color: var(--purple-700);
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
     padding: 6px 16px;
     border-radius: 50px;
     font-size: 0.8rem;
     font-weight: 700;
-    margin-bottom: 12px;
+    margin-bottom: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .ing-simple-title {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     font-weight: 800;
-    color: var(--purple-800);
-    margin-bottom: 8px;
+    color: white;
+    margin-bottom: 12px;
 }
 
 .ing-simple-desc {
-    font-size: 0.92rem;
-    color: var(--text-body);
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.75);
     line-height: 1.7;
-    margin-bottom: 16px;
+    margin-bottom: 20px;
 }
 
 .ing-simple-list {
@@ -1540,7 +1548,7 @@ img {
     margin: 0;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 10px;
 }
 
 .ing-simple-list li {
@@ -1548,9 +1556,9 @@ img {
     align-items: center;
     justify-content: center;
     gap: 8px;
-    font-size: 0.88rem;
+    font-size: 0.9rem;
     font-weight: 600;
-    color: var(--text-dark);
+    color: rgba(255, 255, 255, 0.9);
 }
 
 .ing-simple-list li i {
