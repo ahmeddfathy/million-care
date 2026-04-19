@@ -285,7 +285,7 @@ img {
 .hero-section {
     min-height: auto;
     background: #ffffff;
-     box-shadow: 0 15px 40px rgba(100, 60, 200, 0.06);
+    box-shadow: 0 15px 40px rgba(100, 60, 200, 0.06);
     position: relative;
     overflow: hidden;
     display: flex;
@@ -293,7 +293,7 @@ img {
     padding-top: 110px;
     padding-bottom: 60px;
     border-bottom: 1px solid rgba(124, 58, 237, 0.05);
-    
+
 }
 
 .hero-gradient-overlay {
@@ -1480,7 +1480,8 @@ img {
 }
 
 .ing-simple-card.featured-simple {
-    border-color: rgba(224, 168, 32, 0.5); /* Soft gold border */
+    border-color: rgba(224, 168, 32, 0.5);
+    /* Soft gold border */
     background: rgba(255, 255, 255, 0.06);
     box-shadow: 0 8px 32px rgba(224, 168, 32, 0.15);
 }
