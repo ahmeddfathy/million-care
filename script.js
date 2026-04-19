@@ -862,3 +862,49 @@ document.addEventListener('DOMContentLoaded', () => {
 
     allVideos.forEach(v => videoObserver.observe(v));
 });
+
+
+// ===== Ingredients Mobile Scroll =====
+function scrollIngredients(direction) {
+    const row = document.getElementById('ingredientsRow');
+    if (!row) return;
+    
+    const cardWidth = row.querySelector('[class*="col-"]').offsetWidth;
+    const gap = 16;
+    const scrollAmount = (cardWidth + gap) * direction;
+    
+    row.scrollBy({
+        left: -scrollAmount, // Negative because RTL
+        behavior: 'smooth'
+    });
+}
+
+// Update arrow states on scroll
+document.addEventListener('DOMContentLoaded', () => {
+    const row = document.getElementById('ingredientsRow');
+    const prevBtn = document.querySelector('.ing-mobile-nav.prev');
+    const nextBtn = document.querySelector('.ing-mobile-nav.next');
+    
+    if (row && prevBtn && nextBtn) {
+        const updateArrows = () => {
+            const scrollLeft = row.scrollLeft;
+            const maxScroll = row.scrollWidth - row.clientWidth;
+            
+            // RTL: scrollLeft is negative or 0
+            if (Math.abs(scrollLeft) <= 10) {
+                prevBtn.classList.add('disabled');
+            } else {
+                prevBtn.classList.remove('disabled');
+            }
+            
+            if (Math.abs(scrollLeft) >= maxScroll - 10) {
+                nextBtn.classList.add('disabled');
+            } else {
+                nextBtn.classList.remove('disabled');
+            }
+        };
+        
+        row.addEventListener('scroll', updateArrows);
+        updateArrows(); // Initial check
+    }
+});

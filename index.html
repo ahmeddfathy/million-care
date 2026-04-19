@@ -327,7 +327,15 @@
                     الوقت</p>
             </div>
 
-            <div class="row g-4">
+            <!-- Mobile Navigation Arrows -->
+            <button class="ing-mobile-nav prev" onclick="scrollIngredients(-1)" aria-label="السابق">
+                <i class="bi bi-chevron-right"></i>
+            </button>
+            <button class="ing-mobile-nav next" onclick="scrollIngredients(1)" aria-label="التالي">
+                <i class="bi bi-chevron-left"></i>
+            </button>
+
+            <div class="row g-4" id="ingredientsRow">
                 <!-- Argan Oil -->
                 <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
                     <div class="ing-simple-card">
