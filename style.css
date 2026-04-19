@@ -3279,6 +3279,8 @@ img {
     gap: 14px;
     text-align: right;
     transition: background 0.3s, color 0.3s;
+    position: relative;
+    z-index: 3;
 }
 
 /* Question number badge */
@@ -3296,6 +3298,8 @@ img {
     font-weight: 800;
     flex-shrink: 0;
     transition: background 0.3s, color 0.3s;
+    position: relative;
+    z-index: 2;
 }
 
 .mc-accordion .accordion-button:not(.collapsed) {
@@ -3315,6 +3319,7 @@ img {
     position: absolute;
     left: 20px;
     filter: invert(30%) sepia(80%) saturate(500%) hue-rotate(240deg);
+    z-index: 1;
 }
 
 .mc-accordion .accordion-button:not(.collapsed)::after {
@@ -5213,20 +5218,17 @@ a.footer-contact-item:hover {
     padding: 90px 0 100px;
     position: relative;
     overflow: hidden;
+    box-shadow:
+        0 -20px 60px rgba(100, 60, 200, 0.10),
+        0 20px 60px rgba(100, 60, 200, 0.10);
+    margin: 8px 0;
+    border-top: 1px solid rgba(124, 58, 237, 0.08);
+    border-bottom: 1px solid rgba(124, 58, 237, 0.08);
 }
 
 /* Subtle decorative pattern */
 .htu-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image:
-        radial-gradient(circle at 5% 10%, rgba(124, 58, 237, 0.04) 0%, transparent 45%),
-        radial-gradient(circle at 95% 90%, rgba(234, 179, 8, 0.04) 0%, transparent 45%);
-    pointer-events: none;
+    display: none;
 }
 
 /* Section header */
