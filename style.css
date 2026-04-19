@@ -1578,6 +1578,10 @@ img {
 }
 
 /* Mobile Horizontal Scroll for Ingredient Cards */
+.ing-mobile-nav {
+    display: none; /* Hidden by default on desktop */
+}
+
 @media (max-width: 767.98px) {
     .ingredients-cards-section .container {
         position: relative;
@@ -1618,6 +1622,7 @@ img {
     
     /* Navigation Arrows for Mobile */
     .ing-mobile-nav {
+        display: flex; /* Show on mobile */
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
@@ -1626,7 +1631,6 @@ img {
         background: rgba(255, 255, 255, 0.95);
         border: 2px solid var(--purple-500);
         border-radius: 50%;
-        display: flex;
         align-items: center;
         justify-content: center;
         cursor: pointer;
