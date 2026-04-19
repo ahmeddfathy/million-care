@@ -873,8 +873,9 @@ function scrollIngredients(direction) {
     const gap = 16;
     const scrollAmount = (cardWidth + gap) * direction;
     
+    // In RTL, positive scrollLeft moves right (previous), negative moves left (next)
     row.scrollBy({
-        left: -scrollAmount, // Negative because RTL
+        left: scrollAmount,
         behavior: 'smooth'
     });
 }
@@ -890,14 +891,15 @@ document.addEventListener('DOMContentLoaded', () => {
             const scrollLeft = row.scrollLeft;
             const maxScroll = row.scrollWidth - row.clientWidth;
             
-            // RTL: scrollLeft is negative or 0
-            if (Math.abs(scrollLeft) <= 10) {
+            // Check if at start (right side in RTL)
+            if (scrollLeft >= -10) {
                 prevBtn.classList.add('disabled');
             } else {
                 prevBtn.classList.remove('disabled');
             }
             
-            if (Math.abs(scrollLeft) >= maxScroll - 10) {
+            // Check if at end (left side in RTL)
+            if (scrollLeft <= -(maxScroll - 10)) {
                 nextBtn.classList.add('disabled');
             } else {
                 nextBtn.classList.remove('disabled');
@@ -907,4 +909,108 @@ document.addEventListener('DOMContentLoaded', () => {
         row.addEventListener('scroll', updateArrows);
         updateArrows(); // Initial check
     }
+});
+
+
+// ===== Hero Carousel Swipe/Drag Support =====
+document.addEventListener('DOMContentLoaded', () => {
+    const heroCarousel = document.getElementById('heroCarousel');
+    if (!heroCarousel) return;
+    
+    const bsCarousel = bootstrap.Carousel.getInstance(heroCarousel) || new bootstrap.Carousel(heroCarousel);
+    
+    let startX = 0;
+    let isDragging = false;
+    let hasMoved = false;
+    
+    // Touch events
+    heroCarousel.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+        isDragging = true;
+        hasMoved = false;
+    }, { passive: true });
+    
+    heroCarousel.addEventListener('touchmove', (e) => {
+        if (!isDragging) return;
+        hasMoved = true;
+    }, { passive: true });
+    
+    heroCarousel.addEventListener('touchend', (e) => {
+        if (!isDragging || !hasMoved) {
+            isDragging = false;
+            return;
+        }
+        
+        const endX = e.changedTouches[0].clientX;
+        const diffX = endX - startX;
+        
+        // Swipe threshold
+        if (Math.abs(diffX) > 50) {
+            if (diffX > 0) {
+                // Swiped right - go to previous (in RTL context)
+                bsCarousel.prev();
+            } else {
+                // Swiped left - go to next (in RTL context)
+                bsCarousel.next();
+            }
+        }
+        
+        isDragging = false;
+        hasMoved = false;
+    });
+    
+    // Mouse drag events
+    let mouseStartX = 0;
+    let mouseActive = false;
+    let mouseHasMoved = false;
+    
+    heroCarousel.addEventListener('mousedown', (e) => {
+        mouseStartX = e.clientX;
+        mouseActive = true;
+        mouseHasMoved = false;
+        heroCarousel.style.cursor = 'grabbing';
+        e.preventDefault();
+    });
+    
+    heroCarousel.addEventListener('mousemove', (e) => {
+        if (!mouseActive) return;
+        mouseHasMoved = true;
+    });
+    
+    heroCarousel.addEventListener('mouseup', (e) => {
+        if (!mouseActive || !mouseHasMoved) {
+            mouseActive = false;
+            heroCarousel.style.cursor = 'grab';
+            return;
+        }
+        
+        const mouseEndX = e.clientX;
+        const mouseDiff = mouseEndX - mouseStartX;
+        
+        // Drag threshold
+        if (Math.abs(mouseDiff) > 50) {
+            if (mouseDiff > 0) {
+                // Dragged right - go to previous
+                bsCarousel.prev();
+            } else {
+                // Dragged left - go to next
+                bsCarousel.next();
+            }
+        }
+        
+        mouseActive = false;
+        mouseHasMoved = false;
+        heroCarousel.style.cursor = 'grab';
+    });
+    
+    heroCarousel.addEventListener('mouseleave', () => {
+        if (mouseActive) {
+            mouseActive = false;
+            mouseHasMoved = false;
+            heroCarousel.style.cursor = 'grab';
+        }
+    });
+    
+    // Set initial cursor
+    heroCarousel.style.cursor = 'grab';
 });

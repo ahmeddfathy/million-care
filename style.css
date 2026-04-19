@@ -792,6 +792,10 @@ img {
     border-radius: 20px;
     overflow: hidden;
     max-width: 100%;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
 }
 
 .hero-carousel-inner {
@@ -812,6 +816,9 @@ img {
     object-position: center;
     display: block;
     border-radius: 20px;
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-drag: none;
 }
 
 /* Dots */
